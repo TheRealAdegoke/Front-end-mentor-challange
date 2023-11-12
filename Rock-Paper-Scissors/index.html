@@ -7,55 +7,104 @@
     <script src="./index.js"></script>
     <link rel="stylesheet" href="./style.css" />
     <title>Rock Paper Scissors</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              smallDevice: { min: "320px", max: "470px" },
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body>
     <section class="game-container h-[100vh] text-[white] py-[20px]">
-     <div class="game-body max-w-[480px] mx-auto">
+      <div class="game-body max-w-[480px] smallDevice:max-w-[320px] mx-auto">
         <div
-            class="score-character-board border-[2px] border-[rgba(255,255,255,0.3)] w-[80%] max-w-[600px] mx-auto flex justify-between p-[10px] rounded-[10px] uppercase">
-            <div class="characters font-[700] text-[15px]">
-                <p>Rock</p>
-                <p>Paper</p>
-                <p>Scissors</p>
-                <p>Lizard</p>
-                <p>Spock</p>
-            </div>
-        
-            <div class="score bg-[white] text-[black] rounded-[8px] px-[30px] pt-[10px] max-h-[100px]">
-                <p class="text-[hsl(229,64%,46%)] font-[600]">Score</p>
-                <p class="text-[hsl(229,25%,31%)] font-[700] text-[30px]">12</p>
-            </div>
+          class="score-character-board border-[2px] border-[rgba(255,255,255,0.3)] w-[80%] max-w-[600px] mx-auto flex justify-between p-[10px] rounded-[10px] uppercase"
+        >
+          <div class="characters font-[700] smallDevice:text-[11px] text-[15px]">
+            <p>Rock</p>
+            <p>Paper</p>
+            <p>Scissors</p>
+            <p>Lizard</p>
+            <p>Spock</p>
+          </div>
+
+          <div
+            class="score bg-[white] text-[black] rounded-[8px] px-[30px] pt-[10px] max-h-[100px] smallDevice:max-h-[80px] smallDevice:text-[12px]"
+          >
+            <p class="text-[hsl(229,64%,46%)] font-[600]">Score</p>
+            <p class="text-[hsl(229,25%,31%)] font-[700] text-[30px]">12</p>
+          </div>
         </div>
-        
+
         <div class="game-piece my-[80px] relative">
-            <img src="./images/bg-pentagon.svg" alt="pentagon" class="block mx-auto" />
-        
-            <div class="scissors-container absolute top-[-20px] left-[200px] rounded-full py-[12px] px-[12px] cursor-pointer">
-                <img src="./images/icon-scissors.svg" alt="scissors" class="w-[55px] scissors bg-[white] rounded-full py-[10px] px-[12px]">
-            </div>
-        
-            <div class="paper-container absolute top-[90px] left-[340px] rounded-full py-[12px] px-[12px] cursor-pointer">
-                <img src="./images/icon-paper.svg" alt="paper" class="w-[55px] paper bg-[white] rounded-full py-[10px] px-[12px]">
-            </div>
-        
-            <div class="rock-container absolute bottom-[-20px] left-[295px] rounded-full py-[12px] px-[12px] cursor-pointer">
-                <img src="./images/icon-rock.svg" alt="rock" class="w-[55px] paper bg-[white] rounded-full py-[12px] px-[12px]">
-            </div>
-        
-            <div class="lizard-container absolute bottom-[-20px] left-[110px] rounded-full py-[12px] px-[12px] cursor-pointer">
-                <img src="./images/icon-lizard.svg" alt="lizard" class="w-[55px] paper bg-[white] rounded-full py-[12px] px-[12px]">
-            </div>
-        
-            <div class="paper-container absolute top-[90px] left-[55px] rounded-full py-[12px] px-[12px] cursor-pointer">
-                <img src="./images/icon-spock.svg" alt="spock" class="w-[55px] paper bg-[white] rounded-full py-[12px] px-[15px]">
-            </div>
+          <img
+            src="./images/bg-pentagon.svg"
+            alt="pentagon"
+            class="pentagon block mx-auto smallDevice:w-[200px]"
+          />
+
+          <div
+            class="scissors-container absolute top-[-20px] left-[200px] rounded-full py-[12px] px-[12px] cursor-pointer smallDevice:py-[8px] smallDevice:px-[8px] smallDevice:top-[-15px] smallDevice:left-[135px]"
+          >
+            <img
+              src="./images/icon-scissors.svg"
+              alt="scissors"
+              class="w-[55px] smallDevice:w-[39px] scissors bg-[white] rounded-full py-[10px] px-[12px] smallDevice:py-[8px] smallDevice:px-[9px]"
+            />
+          </div>
+
+          <div
+            class="paper-container absolute top-[90px] left-[340px] rounded-full py-[12px] px-[12px] cursor-pointer smallDevice:py-[8px] smallDevice:px-[8px] smallDevice:top-[50px] smallDevice:left-[220px]"
+          >
+            <img
+              src="./images/icon-paper.svg"
+              alt="paper"
+              class="w-[55px] paper bg-[white] rounded-full py-[10px] px-[12px] smallDevice:w-[39px] smallDevice:py-[8px] smallDevice:px-[9px]"
+            />
+          </div>
+
+          <div
+            class="rock-container absolute bottom-[-20px] left-[295px] rounded-full py-[12px] px-[12px] cursor-pointer smallDevice:py-[8px] smallDevice:px-[8px] smallDevice:bottom-[-12px] smallDevice:left-[190px]"
+          >
+            <img
+              src="./images/icon-rock.svg"
+              alt="rock"
+              class="w-[55px] rock bg-[white] rounded-full py-[12px] px-[12px] smallDevice:w-[39px] smallDevice:py-[8px] smallDevice:px-[9px]"
+            />
+          </div>
+
+          <div
+            class="lizard-container absolute bottom-[-20px] left-[110px] rounded-full py-[12px] px-[12px] cursor-pointer smallDevice:py-[8px] smallDevice:px-[8px] smallDevice:bottom-[-12px] smallDevice:left-[90px]"
+          >
+            <img
+              src="./images/icon-lizard.svg"
+              alt="lizard"
+              class="w-[55px] lizard bg-[white] rounded-full py-[12px] px-[12px] smallDevice:w-[39px] smallDevice:py-[9px] smallDevice:px-[9px]"
+            />
+          </div>
+
+          <div
+            class="spock-container absolute top-[90px] left-[55px] rounded-full py-[12px] px-[12px] cursor-pointer smallDevice:py-[8px] smallDevice:px-[8px] smallDevice:top-[50px] smallDevice:left-[50px]"
+          >
+            <img
+              src="./images/icon-spock.svg"
+              alt="spock"
+              class="w-[55px] spock bg-[white] rounded-full py-[12px] px-[15px] smallDevice:w-[39px] smallDevice:py-[8px] smallDevice:px-[10px]"
+            />
+          </div>
         </div>
-        
+
         <div
-            class="rule border-[2px] w-[100px] border-[rgba(255,255,255,0.3)] rounded-[5px] text-center absolute bottom-[40px] right-[20px] cursor-pointer py-[5px] font-[600] text-[rgba(255,255,255,0.7)] uppercase">
-            <p>Rules</p>
+          class="rule border-[2px] w-[100px] border-[rgba(255,255,255,0.3)] rounded-[5px] text-center absolute bottom-[40px] right-[20px] cursor-pointer py-[5px] font-[600] text-[rgba(255,255,255,0.7)] uppercase"
+        >
+          <p>Rules</p>
         </div>
-     </div>
+      </div>
     </section>
   </body>
 </html>
