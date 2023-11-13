@@ -41,3 +41,10 @@
     hsl(189, 58%, 57%)
   );
 }
+
+.rule-book {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
