@@ -8,12 +8,12 @@ const paper = document.querySelector(".paper-container");
 const scissors = document.querySelector(".scissors-container");
 const lizard = document.querySelector(".lizard-container");
 const spock = document.querySelector(".spock-container");
-const restartGame = document.querySelector(".restart");
+const restartGame = document.querySelectorAll(".restart");
 const humanMove = document.getElementById("human-move");
 const humanPicked = document.getElementById("human-picked");
 const computerPicked = document.getElementById("computer-picked");
 const computerMove = document.getElementById("computer-move");
-const message = document.getElementById("message");
+const message = document.querySelectorAll(".message");
 const score = document.getElementById("score");
 
 let playerScore = 0;
@@ -95,7 +95,9 @@ function getComputerMove() {
 function determineResult(humanMove, computerMove) {
   if (humanMove === computerMove) {
     console.log("It's a tie!");
-    return (message.innerHTML = "It's a tie");
+    return message.forEach((element) => {
+      element.innerHTML = "It's a tie";
+    });
   } else if (
     (humanMove === "./images/icon-scissors.svg" &&
       computerMove === "./images/icon-paper.svg") ||
@@ -121,39 +123,53 @@ function determineResult(humanMove, computerMove) {
     console.log("You win", playerScore);
     playerScore++;
 
-    return (score.innerHTML = playerScore), (message.innerHTML = "You Win");
+    return (
+      (score.innerHTML = playerScore),
+      message.forEach((element) => {
+        element.innerHTML = "You Win";
+      })
+    );
   } else {
     console.log("Computer win");
     playerScore--;
-    return (score.innerHTML = playerScore), (message.innerHTML = "You Lose");
+    return (
+      (score.innerHTML = playerScore),
+      message.forEach((element) => {
+        element.innerHTML = "You Lose";
+      })
+    );
   }
 }
 
-restartGame.addEventListener("click", function () {
-  characters.classList.remove("hidden");
-  piece.classList.add("hidden");
-  removeStyle([
-    "py-[12px]",
-    "px-[12px]",
-    "px-[14px]",
-    "py-[11px]",
-    "py-[14px]",
-    "py-[10px]",
-  ]);
-  humanPicked.classList.remove(
-    "spock-container",
-    "rock-container",
-    "lizard-container",
-    "scissors-container",
-    "paper-container"
-  );
-  computerPicked.classList.remove(
-    "spock-container",
-    "rock-container",
-    "lizard-container",
-    "scissors-container",
-    "paper-container"
-  );
+
+
+restartGame.forEach((element) => {
+  element.addEventListener("click", function () {
+    characters.classList.remove("hidden");
+    piece.classList.add("hidden");
+    removeStyle([
+      "py-[12px]",
+      "px-[12px]",
+      "px-[14px]",
+      "py-[11px]",
+      "py-[14px]",
+      "py-[10px]",
+    ]);
+    humanPicked.classList.remove(
+      "spock-container",
+      "rock-container",
+      "lizard-container",
+      "scissors-container",
+      "paper-container"
+    );
+    computerPicked.classList.remove(
+      "spock-container",
+      "rock-container",
+      "lizard-container",
+      "scissors-container",
+      "paper-container"
+    );
+  });
 });
 
 rock.addEventListener("click", function () {
