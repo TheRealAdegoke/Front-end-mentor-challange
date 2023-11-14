@@ -12,7 +12,9 @@ const restartGame = document.querySelector(".restart");
 const humanMove = document.getElementById("human-move");
 const humanPicked = document.getElementById("human-picked");
 const computerPicked = document.getElementById("computer-picked");
-const computerMoveImg = document.getElementById("computer-move");
+const computerMove = document.getElementById("computer-move");
+const message = document.getElementById("message");
+const score = document.getElementById("score");
 
 let playerScore = 0;
 
@@ -27,8 +29,6 @@ closeRules.addEventListener("click", function () {
 function getHumanMove(imagepath) {
   const displayedMoveImg = humanMove;
   displayedMoveImg.src = imagepath;
-
-  
 }
 
 function changeColor(color) {
@@ -76,7 +76,7 @@ function getComputerMove() {
 
   const randomIndex = Math.floor(Math.random() * computerMoves.length);
   const randomChoice = computerMoves[randomIndex];
-  computerMoveImg.src = randomChoice;
+  computerMove.src = randomChoice;
   if (randomChoice === "./images/icon-rock.svg") {
     changeComputerColor("rock-container");
   } else if (randomChoice === "./images/icon-paper.svg") {
@@ -95,6 +95,37 @@ function getComputerMove() {
 function determineResult(humanMove, computerMove) {
   if (humanMove === computerMove) {
     console.log("It's a tie!");
+    return (message.innerHTML = "It's a tie");
+  } else if (
+    (humanMove === "./images/icon-scissors.svg" &&
+      computerMove === "./images/icon-paper.svg") ||
+    (humanMove === "./images/icon-scissors.svg" &&
+      computerMove === "./images/icon-lizard.svg") ||
+    (humanMove === "./images/icon-paper.svg" &&
+      computerMove === "./images/icon-rock.svg") ||
+    (humanMove === "./images/icon-paper.svg" &&
+      computerMove === "./images/icon-spock.svg") ||
+    (humanMove === "./images/icon-rock.svg" &&
+      computerMove === "./images/icon-lizard.svg") ||
+    (humanMove === "./images/icon-rock.svg" &&
+      computerMove === "./images/icon-scissors.svg") ||
+    (humanMove === "./images/icon-lizard.svg" &&
+      computerMove === "./images/icon-paper.svg") ||
+    (humanMove === "./images/icon-lizard.svg" &&
+      computerMove === "./images/icon-spock.svg") ||
+    (humanMove === "./images/icon-spock.svg" &&
+      computerMove === "./images/icon-scissors.svg") ||
+    (humanMove === "./images/icon-spock.svg" &&
+      computerMove === "./images/icon-rock.svg")
+  ) {
+    console.log("You win", playerScore);
+    playerScore++;
+
+    return (score.innerHTML = playerScore), (message.innerHTML = "You Win");
+  } else {
+    console.log("Computer win");
+    playerScore--;
+    return (score.innerHTML = playerScore), (message.innerHTML = "You Lose");
   }
 }
 
@@ -130,7 +161,7 @@ rock.addEventListener("click", function () {
   piece.classList.remove("hidden");
   changeColor("rock-container");
   changeStyle(["py-[12px]", "px-[12px]"]);
-  const humanMove = "./images/icon-rock.svg"
+  const humanMove = "./images/icon-rock.svg";
   const computerMove = getComputerMove();
   getHumanMove(humanMove);
   determineResult(humanMove, computerMove);
@@ -141,7 +172,7 @@ paper.addEventListener("click", function () {
   piece.classList.remove("hidden");
   changeColor("paper-container");
   changeStyle(["py-[11px]", "px-[14px]"]);
-  const humanMove = "./images/icon-paper.svg"
+  const humanMove = "./images/icon-paper.svg";
   const computerMove = getComputerMove();
   getHumanMove(humanMove);
   determineResult(humanMove, computerMove);
@@ -152,7 +183,7 @@ scissors.addEventListener("click", function () {
   piece.classList.remove("hidden");
   changeColor("scissors-container");
   changeStyle(["py-[12px]", "px-[14px]"]);
-  const humanMove = "./images/icon-scissors.svg"
+  const humanMove = "./images/icon-scissors.svg";
   const computerMove = getComputerMove();
   getHumanMove(humanMove);
   determineResult(humanMove, computerMove);
@@ -163,7 +194,7 @@ lizard.addEventListener("click", function () {
   piece.classList.remove("hidden");
   changeColor("lizard-container");
   changeStyle(["py-[14px]", "px-[14px]"]);
-  const humanMove = "./images/icon-lizard.svg"
+  const humanMove = "./images/icon-lizard.svg";
   const computerMove = getComputerMove();
   getHumanMove(humanMove);
   determineResult(humanMove, computerMove);
@@ -174,7 +205,7 @@ spock.addEventListener("click", function () {
   piece.classList.remove("hidden");
   changeColor("spock-container");
   changeStyle(["py-[10px]", "px-[14px]"]);
-  const humanMove = "./images/icon-spock.svg"
+  const humanMove = "./images/icon-spock.svg";
   const computerMove = getComputerMove();
   getHumanMove(humanMove);
   determineResult(humanMove, computerMove);
