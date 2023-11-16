@@ -40,7 +40,12 @@
             class="score bg-[white] text-[black] rounded-[8px] px-[30px] pt-[10px] max-h-[100px] smallDevice:max-h-[80px] smallDevice:text-[12px]"
           >
             <p class="text-[hsl(229,64%,46%)] font-[600]">Score</p>
-            <p id="score" class="text-[hsl(229,25%,31%)] font-[700] text-[30px]">0</p>
+            <p
+              id="score"
+              class="text-[hsl(229,25%,31%)] font-[700] text-[30px]"
+            >
+              0
+            </p>
           </div>
         </div>
 
@@ -103,9 +108,9 @@
         </div>
 
         <div class="chosen-piece hidden">
-          <div class="flex justify-evenly mt-[50px]">
+          <div class="flex justify-evenly smallDevice:justify-around mt-[50px]">
             <div
-              class="human flex flex-col justify-center items-center gap-[20px] text-[20px] uppercase font-[600]"
+              class="human flex flex-col justify-center items-center gap-[20px] text-[20px] smallDevice:text-[15px] uppercase font-[600]"
             >
               <p>You picked</p>
 
@@ -122,9 +127,9 @@
             </div>
 
             <div
-              class="text-[20px] flex flex-col justify-center items-center font-[600] mt-[50px] ml-[50px] uppercase"
+              class="text-[20px] flex flex-col justify-center items-center font-[600] mt-[50px] ml-[50px] uppercase mobile:hidden"
             >
-              <p id="message">You win</p>
+              <p class="message"></p>
               <button
                 type="button"
                 class="restart bg-[white] text-[hsl(229,25%,31%)] block mt-[10px] px-[5px] py-[8px] rounded-[5px] uppercase"
@@ -134,7 +139,7 @@
             </div>
 
             <div
-              class="computer flex flex-col justify-center items-center gap-[20px] text-[20px] uppercase font-[600]"
+              class="computer flex flex-col justify-center items-center gap-[20px] text-[20px] smallDevice:text-[15px] uppercase font-[600]"
             >
               <p>The house picked</p>
               <div
@@ -148,6 +153,20 @@
                   class="w-[60px] scissors bg-[white] rounded-full py-[10px] px-[12px]"
                 />
               </div>
+            </div>
+          </div>
+
+          <div class="">
+            <div
+              class="text-[20px] font-[600] mt-[50px] ml-[50px] uppercase mobile:block w-[50%] smallDevice:ml-[30%] mediumDevice:ml-[38%] hidden"
+            >
+              <p class="message ml-[6%] smallDevice:ml-[8%]"></p>
+              <button
+                type="button"
+                class="restart bg-[white] text-[hsl(229,25%,31%)] block mt-[10px] px-[5px] py-[8px] rounded-[5px] uppercase"
+              >
+                Play again
+              </button>
             </div>
           </div>
         </div>
