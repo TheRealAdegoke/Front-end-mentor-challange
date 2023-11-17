@@ -1,11 +1,10 @@
-import UserForm from "./Form/UserForm"
 
 
 function App() {
-  
+
   return (
     <>
-    <UserForm/>
+      <h1 className="text-[blue]">Hello World</h1>
     </>
   )
 }
