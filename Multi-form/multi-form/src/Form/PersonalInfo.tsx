@@ -3,8 +3,7 @@
 const PersonalInfo = () => {
   return (
     <>
-      <section className="mobileDevice:min-w-[100vw] mobileDevice:h-[200px]">
-
+      <section className="mobileDevice:min-w-[100vw]">
         <div className="mobileDevice:bg-[white] mobileDevice:w-[90%] mx-auto rounded-[10px] mobileDevice:h-[500px] px-[20px]">
           <div className="max-w-[450px] mb-[20px]">
             <h1 className="font-[600] text-[2rem] text-[hsl(213,96%,18%)] pt-[20px] mb-[10px]">
@@ -59,6 +58,12 @@ const PersonalInfo = () => {
               />
             </div>
           </form>
+        </div>
+
+        <div className="flex justify-end mt-[20px] Desktop:mt-[40px] px-[20px]">
+          <button className="bg-[hsl(213,96%,18%)] rounded-[5px] p-[10px] text-[white] font-[600]">
+            Next Step
+          </button>
         </div>
       </section>
     </>
