@@ -1,6 +1,4 @@
-import AddOn from "./AddOn";
 import Aside from "./Aside";
-import Finishing from "./Finishing";
 import PersonalInfo from "./PersonalInfo"
 import SelectPlan from "./SelectPlan";
 
@@ -63,9 +61,7 @@ const Form = () => {
                 </div>
               </div>
               {/* <PersonalInfo /> */}
-              {/* <SelectPlan /> */}
-              {/* <AddOn/> */}
-              <Finishing/>
+              <SelectPlan />
             </div>
           </div>
         </form>
