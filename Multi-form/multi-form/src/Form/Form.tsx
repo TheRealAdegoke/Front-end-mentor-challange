@@ -1,9 +1,44 @@
+import { useState } from "react";
+import AddOn from "./AddOn";
 import Aside from "./Aside";
+import Completed from "./Completed";
+import Finishing from "./Finishing";
 import PersonalInfo from "./PersonalInfo"
 import SelectPlan from "./SelectPlan";
 
 
 const Form = () => {
+  const [count, setCount] = useState(0)
+  const [enabled, setEnabled] = useState(false);
+  const [selectedPlanName, setSelectedPlanName] = useState("");
+
+  const getSelectedPlanText = (id: number) => {
+    switch (id) {
+      case 1:
+        return enabled ? "$90/yr" : "$9/mo";
+      case 2:
+        return enabled ? "$120/yr" : "$12/mo";
+      case 3:
+        return enabled ? "$150/yr" : "$15/mo";
+      default:
+        return "";
+    }
+  };
+
+  const getSelectedPlanName = (id: number) => {
+    switch (id) {
+      case 1:
+        return "Arcade";
+      case 2:
+        return "Advance";
+      case 3:
+        return "Pro";
+      default:
+        return "";
+    }
+  };
+
+
   return (
     <>
       <section className="bg-[hsl(206,94%,87%)] min-h-[100vh] Desktop:flex Desktop:flex-col Desktop:items-center Desktop:justify-center">
@@ -13,14 +48,20 @@ const Form = () => {
           className="Desktop:bg-[white] w-[100%] Desktop:w-[95%] max-w-[800px] mx-auto rounded-[10px]"
         >
           <div className="Desktop:flex Desktop:p-[15px]">
-            <div className="Desktop:w-[44%]">
+            <div className="Desktop:w-[35%]">
               <Aside />
             </div>
 
-            <div className="Desktop:w-[%]  bg-sidebar-mobile ">
+            <div className="Desktop:w-[56%]  bg-sidebar-mobile ">
               <div className="py-[30px] flex gap-[45px] justify-center Desktop:hidden">
                 <div className="flex justify-center items-center gap-[10px]">
-                  <div className="bg-[hsl(206,94%,87%)] rounded-full px-[18px] py-[8px] font-[600] cursor-pointer">
+                  <div
+                    className={`${
+                      count === 0
+                        ? "bg-[hsl(206,94%,87%)]"
+                        : "border-[1px] text-[white]"
+                    } rounded-full px-[18px] py-[8px] font-[600] cursor-pointer`}
+                  >
                     <button className="">1</button>
                   </div>
                   <div className="text-[white] uppercase mobileDevice:hidden">
@@ -30,7 +71,13 @@ const Form = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-[10px]">
-                  <div className="rounded-full px-[16px] py-[8px] border-[1px] font-[600] text-[white] cursor-pointer">
+                  <div
+                    className={`${
+                      count === 1
+                        ? "bg-[hsl(206,94%,87%)]"
+                        : "border-[1px] text-[white]"
+                    } rounded-full px-[16px] py-[8px] font-[600] cursor-pointer`}
+                  >
                     <button className="">2</button>
                   </div>
                   <div className="text-[white] uppercase mobileDevice:hidden">
@@ -40,7 +87,13 @@ const Form = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-[10px]">
-                  <div className="rounded-full px-[16px] py-[8px] border-[1px] font-[600] text-[white] cursor-pointer">
+                  <div
+                    className={`${
+                      count === 2
+                        ? "bg-[hsl(206,94%,87%)]"
+                        : "border-[1px] text-[white]"
+                    } rounded-full px-[16px] py-[8px] font-[600] cursor-pointer`}
+                  >
                     <button className="">3</button>
                   </div>
                   <div className="text-[white] uppercase mobileDevice:hidden">
@@ -50,7 +103,13 @@ const Form = () => {
                 </div>
 
                 <div className="flex justify-center items-center gap-[10px]">
-                  <div className="rounded-full px-[16px] py-[8px] border-[1px] font-[600] text-[white] cursor-pointer">
+                  <div
+                    className={`${
+                      count === 3
+                        ? "bg-[hsl(206,94%,87%)]"
+                        : "border-[1px] text-[white]"
+                    } rounded-full px-[16px] py-[8px] font-[600] cursor-pointer`}
+                  >
                     <button className="">4</button>
                   </div>
 
@@ -60,8 +119,21 @@ const Form = () => {
                   </div>
                 </div>
               </div>
-              {/* <PersonalInfo /> */}
-              <SelectPlan />
+              {count === 0 && <PersonalInfo setCount={setCount} />}
+              {count === 1 && (
+                <SelectPlan
+                  setCount={setCount}
+                  getSelectedPlanText={getSelectedPlanText}
+                  getSelectedPlanName={getSelectedPlanName}
+                  enabled={enabled}
+                  setEnabled={setEnabled}
+                  selectedPlanName={selectedPlanName}
+                  setSelectedPlanName={setSelectedPlanName}
+                />
+              )}
+              {count === 2 && <AddOn setCount={setCount} />}
+              {count === 3 && <Finishing />}
+              {count === 4 && <Completed />}
             </div>
           </div>
         </form>
