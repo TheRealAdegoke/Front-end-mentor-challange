@@ -133,7 +133,7 @@ const Form = () => {
               )}
               {count === 2 && <AddOn setCount={setCount} />}
               {count === 3 && <Finishing />}
-              {/* <Completed/> */}
+              {count === 3 && <Completed />}
             </div>
           </div>
         </form>
