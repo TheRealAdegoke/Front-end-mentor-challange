@@ -1,6 +1,14 @@
+import { useState } from "react";
 
+interface MyComponentProps {
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+}
 
-const AddOn = () => {
+const AddOn: React.FC<MyComponentProps> = ({ setCount }) => {
+  const [online, setOnline] = useState(false)
+  const [local, setLocal] = useState(false);
+  const [customizable, setCustomizable] = useState(false);
+
   return (
     <>
       <section className="pb-[40px]">
@@ -16,10 +24,22 @@ const AddOn = () => {
           </div>
 
           <div className="flex flex-col gap-[20px]">
-            <div className="flex justify-between items-center border-[1px] border-[hsl(243,100%,62%)] rounded-[8px] p-[20px] mobileDevice:p-[10px]">
+            <div
+              className={`${
+                online
+                  ? "border-[hsl(243,100%,62%)] bg-[hsl(217,100%,97%)]"
+                  : ""
+              } flex justify-between items-center border-[1px] rounded-[8px] p-[20px] mobileDevice:p-[10px]`}
+            >
               <div className="flex items-center gap-[20px]">
                 <div>
-                  <input type="checkbox" name="" id="" className="" />
+                  <input
+                    type="checkbox"
+                    className=""
+                    onClick={() => {
+                      setOnline(!online);
+                    }}
+                  />
                 </div>
                 <div>
                   <p className="font-[700] text-[20px] text-[hsl(213,96%,18%)]">
@@ -34,10 +54,20 @@ const AddOn = () => {
               <p className="text-[hsl(243,100%,62%)]">+ $1/mo</p>
             </div>
 
-            <div className="flex justify-between items-center border-[1px] border-[hsl(243,100%,62%)] rounded-[8px] p-[20px] mobileDevice:p-[10px]">
+            <div
+              className={`${
+                local ? "border-[hsl(243,100%,62%)] bg-[hsl(217,100%,97%)]" : ""
+              } flex justify-between items-center border-[1px] rounded-[8px] p-[20px] mobileDevice:p-[10px]`}
+            >
               <div className="flex items-center gap-[20px]">
                 <div>
-                  <input type="checkbox" name="" id="" className="" />
+                  <input
+                    type="checkbox"
+                    name=""
+                    onClick={() => {
+                      setLocal(!local);
+                    }}
+                  />
                 </div>
                 <div>
                   <p className="font-[700] text-[20px] text-[hsl(213,96%,18%)]">
@@ -49,13 +79,21 @@ const AddOn = () => {
                 </div>
               </div>
 
-              <p className="text-[hsl(243,100%,62%)]">+ $1/mo</p>
+              <p className="text-[hsl(243,100%,62%)]">+ $2/mo</p>
             </div>
 
-            <div className="flex justify-between items-center border-[1px] border-[hsl(243,100%,62%)] rounded-[8px] p-[20px] mobileDevice:p-[10px]">
+            <div
+              className={`${
+                customizable
+                  ? "border-[hsl(243,100%,62%)] bg-[hsl(217,100%,97%)]"
+                  : ""
+              } flex justify-between items-center border-[1px] rounded-[8px] p-[20px] mobileDevice:p-[10px]`}
+            >
               <div className="flex items-center gap-[20px]">
                 <div>
-                  <input type="checkbox" name="" id="" className="" />
+                  <input type="checkbox" name=""onClick={() => {
+                    setCustomizable(!customizable)
+                  }} />
                 </div>
                 <div>
                   <p className="font-[700] text-[20px] text-[hsl(213,96%,18%)]">
@@ -67,23 +105,35 @@ const AddOn = () => {
                 </div>
               </div>
 
-              <p className="text-[hsl(243,100%,62%)]">+ $1/mo</p>
+              <p className="text-[hsl(243,100%,62%)]">+ $2/mo</p>
             </div>
           </div>
         </div>
 
         <div className="flex justify-between mt-[20px] Desktop:mt-[40px] px-[20px]">
-          <button className="rounded-[5px] p-[10px] text-[hsl(231,11%,63%)] font-[600]">
+          <button
+            className="rounded-[5px] p-[10px] text-[hsl(231,11%,63%)] font-[600]"
+            onClick={(e) => {
+              e.preventDefault();
+              setCount((nextCount) => nextCount - 1);
+            }}
+          >
             Go Back
           </button>
 
-          <button className="bg-[hsl(213,96%,18%)] rounded-[5px] p-[10px] text-[white] font-[600]">
+          <button
+            className="bg-[hsl(213,96%,18%)] rounded-[5px] p-[10px] text-[white] font-[600]"
+            onClick={(e) => {
+              e.preventDefault();
+              setCount((nextCount) => nextCount + 1);
+            }}
+          >
             Next Step
           </button>
         </div>
       </section>
     </>
   );
-}
+};
 
 export default AddOn

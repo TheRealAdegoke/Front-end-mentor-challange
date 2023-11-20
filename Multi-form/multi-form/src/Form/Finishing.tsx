@@ -15,7 +15,60 @@ const Finishing = () => {
             </p>
           </div>
 
-          <div></div>
+          <div className="bg-[hsl(217,100%,97%)] p-[15px] rounded-[8px]">
+            <div className="flex justify-between items-center mb-[15px]">
+              <div className="flex items-center gap-[20px]">
+                <div>
+                  <p className="font-[700] text-[20px] text-[hsl(213,96%,18%)]">
+                    Arcade (monthly)
+                  </p>
+                  <p className="text-[hsl(231,11%,63%)] font-[600] underline cursor-pointer">
+                    Change
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-[hsl(213,96%,18%)] font-[600]">+$9/mo</p>
+            </div>
+
+            <hr />
+
+            <div className="flex justify-between items-center my-[10px]">
+              <div className="flex items-center gap-[20px]">
+                <div>
+                  <p className="text-[hsl(231,11%,63%)] font-[600]">
+                    Online service
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-[hsl(213,96%,18%)] font-[600]">+$9/mo</p>
+            </div>
+
+            <div className="flex justify-between items-center mb-[15px]">
+              <div className="flex items-center gap-[20px]">
+                <div>
+                  <p className="text-[hsl(231,11%,63%)] font-[600]">
+                    Local storage
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-[hsl(213,96%,18%)] font-[600]">+$9/mo</p>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center my-[10px] w-[95%] mx-auto">
+            <div className="flex items-center gap-[20px]">
+              <div>
+                <p className="text-[hsl(231,11%,63%)] font-[600]">
+                  Total (monthly)
+                </p>
+              </div>
+            </div>
+
+            <p className="text-[hsl(213,96%,18%)] font-[600]">+$9/mo</p>
+          </div>
         </div>
 
         <div className="flex justify-between mt-[20px] Desktop:mt-[40px] px-[20px]">
