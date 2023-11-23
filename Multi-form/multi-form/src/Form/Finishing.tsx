@@ -1,6 +1,17 @@
 
+interface MyComponentProps {
+  selectedPlanName: string;
+  selectedPlanText: string;
+  selectedPlanType: string;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+}
 
-const Finishing = () => {
+const Finishing: React.FC<MyComponentProps> = ({
+  selectedPlanName,
+  selectedPlanText,
+  selectedPlanType,
+  setCount,
+}) => {
   return (
     <>
       <section className="pb-[40px]">
@@ -20,7 +31,7 @@ const Finishing = () => {
               <div className="flex items-center gap-[20px]">
                 <div>
                   <p className="font-[700] text-[20px] text-[hsl(213,96%,18%)]">
-                    Arcade (monthly)
+                    {selectedPlanName} ({selectedPlanType})
                   </p>
                   <p className="text-[hsl(231,11%,63%)] font-[600] underline cursor-pointer">
                     Change
@@ -28,7 +39,9 @@ const Finishing = () => {
                 </div>
               </div>
 
-              <p className="text-[hsl(213,96%,18%)] font-[600]">+$9/mo</p>
+              <p className="text-[hsl(213,96%,18%)] font-[600]">
+                {selectedPlanText}
+              </p>
             </div>
 
             <hr />
@@ -62,7 +75,7 @@ const Finishing = () => {
             <div className="flex items-center gap-[20px]">
               <div>
                 <p className="text-[hsl(231,11%,63%)] font-[600]">
-                  Total (monthly)
+                  Total ({selectedPlanType})
                 </p>
               </div>
             </div>
@@ -72,7 +85,13 @@ const Finishing = () => {
         </div>
 
         <div className="flex justify-between mt-[20px] Desktop:mt-[40px] px-[20px]">
-          <button className="rounded-[5px] p-[10px] text-[hsl(231,11%,63%)] font-[600]">
+          <button
+            className="rounded-[5px] p-[10px] text-[hsl(231,11%,63%)] font-[600]"
+            onClick={(e) => {
+              e.preventDefault();
+              setCount((nextCount) => nextCount - 1);
+            }}
+          >
             Go Back
           </button>
 
@@ -83,6 +102,6 @@ const Finishing = () => {
       </section>
     </>
   );
-}
+};
 
 export default Finishing

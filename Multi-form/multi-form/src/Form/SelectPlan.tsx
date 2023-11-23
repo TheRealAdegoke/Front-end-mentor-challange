@@ -7,21 +7,25 @@ import React, { useState } from "react";
 interface MyComponentProps {
   setCount: React.Dispatch<React.SetStateAction<number>>;
   enabled: boolean;
-  selectedPlanName: string;
   setSelectedPlanName: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedPlanText: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedPlanType: React.Dispatch<React.SetStateAction<string>>;
   setEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   getSelectedPlanText: (id: number) => string;
   getSelectedPlanName: (id: number) => string;
+  getSelectedPlanType: (id: boolean) => string;
 }
 
 const SelectPlan: React.FC<MyComponentProps> = ({
   setCount,
   enabled,
-  selectedPlanName,
   setEnabled,
   setSelectedPlanName,
+  setSelectedPlanText,
+  setSelectedPlanType,
   getSelectedPlanText,
   getSelectedPlanName,
+  getSelectedPlanType,
 }) => {
   const [plan, setPlan] = useState([
     { id: 1, isChosen: false },
@@ -31,32 +35,19 @@ const SelectPlan: React.FC<MyComponentProps> = ({
 
   const handleSelectedPlan = (id: number) => {
     const planName = getSelectedPlanName(id);
+    const planText = getSelectedPlanText(id);
     const updatedPlan = plan.map((item) => ({
       ...item,
       isChosen: item.id === id,
     }));
 
     setPlan(updatedPlan);
-    setSelectedPlanName(planName)
-
-    // Console log the selected plan text
-    console.log("Selected Plan Text:", getSelectedPlanText(id));
-    console.log("Selected Plan Name:", getSelectedPlanName(id));
-  };
-  
-
-  const getSelectedPlanType = () => {
-    switch (enabled) {
-      case false:
-        return "monthly";
-      case true:
-        return "yearly";
-      default:
-        return "";
-    }
+    setSelectedPlanName(planName);
+    setSelectedPlanText(planText);
   };
 
-  console.log(getSelectedPlanType());
+  const planType = getSelectedPlanType(enabled);
+  setSelectedPlanType(planType)
 
   return (
     <>
@@ -71,8 +62,6 @@ const SelectPlan: React.FC<MyComponentProps> = ({
               You have the option of monthly or yearly billing.
             </p>
           </div>
-
-          <p>{selectedPlanName}</p>
 
           <div className="flex gap-[20px] mobileDevice:flex-col">
             {plan.map((item) => (
