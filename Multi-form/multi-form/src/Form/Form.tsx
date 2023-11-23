@@ -11,6 +11,8 @@ const Form = () => {
   const [count, setCount] = useState(0)
   const [enabled, setEnabled] = useState(false);
   const [selectedPlanName, setSelectedPlanName] = useState("");
+  const [selectedPlanText, setSelectedPlanText] = useState("")
+  const [selectedPlanType, setSelectedPlanType] = useState("")
 
   const getSelectedPlanText = (id: number) => {
     switch (id) {
@@ -38,6 +40,17 @@ const Form = () => {
     }
   };
 
+  const getSelectedPlanType = () => {
+    switch (enabled) {
+      case false:
+        return "monthly";
+      case true:
+        return "yearly";
+      default:
+        return "";
+    }
+  };
+
 
   return (
     <>
@@ -49,7 +62,7 @@ const Form = () => {
         >
           <div className="Desktop:flex Desktop:p-[15px]">
             <div className="Desktop:w-[35%]">
-              <Aside />
+              <Aside count={count} />
             </div>
 
             <div className="Desktop:w-[56%]  bg-sidebar-mobile ">
@@ -125,14 +138,23 @@ const Form = () => {
                   setCount={setCount}
                   getSelectedPlanText={getSelectedPlanText}
                   getSelectedPlanName={getSelectedPlanName}
+                  getSelectedPlanType={getSelectedPlanType}
                   enabled={enabled}
                   setEnabled={setEnabled}
-                  selectedPlanName={selectedPlanName}
                   setSelectedPlanName={setSelectedPlanName}
+                  setSelectedPlanText={setSelectedPlanText}
+                  setSelectedPlanType={setSelectedPlanType}
                 />
               )}
               {count === 2 && <AddOn setCount={setCount} />}
-              {count === 3 && <Finishing />}
+              {count === 3 && (
+                <Finishing
+                  setCount={setCount}
+                  selectedPlanName={selectedPlanName}
+                  selectedPlanText={selectedPlanText}
+                  selectedPlanType={selectedPlanType}
+                />
+              )}
               {count === 4 && <Completed />}
             </div>
           </div>

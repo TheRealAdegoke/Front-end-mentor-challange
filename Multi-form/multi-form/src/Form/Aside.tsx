@@ -1,12 +1,22 @@
+import React from "react";
 
+interface MyComponentProps {
+  count: number;
+}
 
-const Aside = () => {
+const Aside: React.FC<MyComponentProps> = ({ count }) => {
   return (
     <>
       <aside className="aside h-[568px] mobileDevice:hidden">
         <div className="pt-[30px] flex gap-[25px] flex-col items-start pl-[40px]">
           <div className="flex justify-center items-center gap-[10px]">
-            <div className="bg-[hsl(206,94%,87%)] rounded-full px-[18px] py-[8px] font-[600] cursor-pointer">
+            <div
+              className={`${
+                count === 0
+                  ? "bg-[hsl(206,94%,87%)]"
+                  : "border-[1px] text-[white]"
+              } rounded-full px-[17px] py-[8px] font-[600] cursor-pointer`}
+            >
               <button className="">1</button>
             </div>
             <div className="text-[white] uppercase">
@@ -16,7 +26,11 @@ const Aside = () => {
           </div>
 
           <div className="flex justify-center items-center gap-[10px]">
-            <div className="rounded-full px-[16px] py-[8px] border-[1px] font-[600] text-[white] cursor-pointer">
+            <div className={`${
+                count === 1
+                  ? "bg-[hsl(206,94%,87%)]"
+                  : "border-[1px] text-[white]"
+              } rounded-full px-[16px] py-[8px] font-[600] cursor-pointer`}>
               <button className="">2</button>
             </div>
             <div className="text-[white] uppercase">
@@ -26,7 +40,11 @@ const Aside = () => {
           </div>
 
           <div className="flex justify-center items-center gap-[10px]">
-            <div className="rounded-full px-[16px] py-[8px] border-[1px] font-[600] text-[white] cursor-pointer">
+            <div className={`${
+                count === 2
+                  ? "bg-[hsl(206,94%,87%)]"
+                  : "border-[1px] text-[white]"
+              } rounded-full px-[16px] py-[8px] font-[600] cursor-pointer`}>
               <button className="">3</button>
             </div>
             <div className="text-[white] uppercase">
@@ -36,7 +54,11 @@ const Aside = () => {
           </div>
 
           <div className="flex justify-center items-center gap-[10px]">
-            <div className="rounded-full px-[16px] py-[8px] border-[1px] font-[600] text-[white] cursor-pointer">
+            <div className={`${
+                count === 3
+                  ? "bg-[hsl(206,94%,87%)]"
+                  : "border-[1px] text-[white]"
+              } rounded-full px-[16px] py-[8px] font-[600] cursor-pointer`}>
               <button className="">4</button>
             </div>
 
@@ -49,6 +71,6 @@ const Aside = () => {
       </aside>
     </>
   );
-}
+};
 
-export default Aside
+export default Aside;
