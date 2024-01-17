@@ -1,3 +1,5 @@
+// Decision construct
+
 // Function to check if an integer is positive or negative
 // Write a JavaScript function that takes an integer as input and checks if it is positive, negative, or zero. The function should log the result to the console.
 const integerState = (integer) => {
@@ -114,3 +116,36 @@ dayOfWeek(1); // Should log "Sunday"
 dayOfWeek(3); // Should log "Tuesday"
 dayOfWeek(6); // Should log "Friday"
 dayOfWeek(8); // Should log "Invalid day number"
+
+
+// Reptition construct
+
+// Function to check Grade Calculator
+// Write a JavaScript function named calculateSum that takes a positive integer n as a parameter and calculates the sum of all integers from 1 to n. Use a loop to achieve this. For example, if n is 5, the function should return the sum of 1 + 2 + 3 + 4 + 5.
+
+const calculateSum = (n) => {
+    let sum = 0
+    for (let i = 1; i <= n; i++) {
+        sum += i
+    }
+    console.log(sum);
+    return sum
+}
+
+calculateSum(5) // Logs 15 to the console 
+
+// Function to check Grade Calculator
+// Write a JavaScript function named calculateFactorial that takes a non-negative integer n as a parameter and calculates the factorial of n. The factorial of a non-negative integer is the product of all positive integers less than or equal to that number. For example, if n is 5, the function should return the result of 5 * 4 * 3 * 2 * 1.
+
+const calculateFactorial = (n) => {
+  if (n === 0 || n === 1) {
+    return 1
+  }
+  for (let i = n - 1; i >= 1; i--) {
+    n *= i;
+  }
+  console.log(n);
+  return n
+};
+
+calculateFactorial(5); // Logs 15 to the console
